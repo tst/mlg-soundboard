@@ -50,7 +50,7 @@ BufferLoader.prototype.loadBuffer = function(url, index) {
 
 BufferLoader.prototype.load = function() {
   for (var i = 0; i < this.urlList.length; ++i)
-  this.loadBuffer(this.urlList[i], i);
+      this.loadBuffer(this.urlList[i], i);
 }
 
 /* end */
@@ -127,7 +127,8 @@ var bList;
 
 function finishedLoading(bufferList) {
     bList = bufferList;
-
+    
+    $("#loading").hide();
     /* add buttons */
     for (var i = 0; i < soundfiles.length; ++i)
     {
