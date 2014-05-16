@@ -16,7 +16,7 @@ and host your own soundboard.
 * Open your browser
 * Go to [soundboard.panictank.net](http://soundboard.panictank.net)
 
-It's tested on Firefox 28.0 and 29.0 (current version) and Chrome 34 (current) and properly for future version.
+It's tested on Firefox 28.0 and 29.0 (current version) and Chrome 34 (current) and will work likely for future version.
 Other browsers don't seem to work because they haven't implemented the Web Audio API, yet.
 
 
