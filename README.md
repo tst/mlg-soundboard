@@ -22,6 +22,6 @@ Other browsers don't seem to work because they haven't implemented the Web Audio
 
 ## Requests / Questions
 
-If you have any questions or requests open an issue, message me on reddit ([/u/tst__](http://www.reddit.com/message/compose/?to=tst__)) or shout really really loud outside your window.
+If you have any questions or requests open an issue, message me on reddit ([/u/tst__](http://www.reddit.com/message/compose/?to=tst__)) or shout really really loud out your window.
 
 
