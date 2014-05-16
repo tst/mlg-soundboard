@@ -71,10 +71,13 @@ var soundfiles = new Array("2SAD4ME.mp3",
                            "WOMBO COMBO.mp3",
                            "DAMN SON WHERED YOU FIND THIS.mp3",
                            "Whatcha Say.mp3",
-                           "2SED4AIRHORN.mp3");
+                           "2SED4AIRHORN.mp3",
+                           "tactical nuke.mp3",
+                           "intervention 420.mp3",
+                           "AIRPORN.mp3");
 
 var sourcefiles = new Array("https://www.youtube.com/watch?v=JSnR80kY0m0",
-                            "https://www.youtube.com/watch?v=Ks5bzvT-D6I",
+                            "https://www.youtube.com/watch?v=IpyingiCwV8",
                             "https://www.youtube.com/watch?v=u9ymUX1fJLw",
                             "https://www.dropbox.com/s/3nh8u7nrql96k48/HITMARKER.wav",
                             "https://www.youtube.com/watch?v=gl33V3fh7k0",
@@ -87,7 +90,10 @@ var sourcefiles = new Array("https://www.youtube.com/watch?v=JSnR80kY0m0",
                             "https://www.youtube.com/watch?v=pD_imYhNoQ4",
                             "https://www.youtube.com/watch?v=pD_imYhNoQ4",
                             "https://www.youtube.com/watch?v=thhaf-bKWyg",
-                            "https://soundcloud.com/gay-bagel/sad-airhorn");
+                            "https://soundcloud.com/gay-bagel/sad-airhorn",
+                            "https://www.youtube.com/watch?v=cLI8wtbCIkM",
+                            "https://www.youtube.com/watch?v=1O-dqWQOc8s",
+                            "https://www.youtube.com/watch?v=Ks5bzvT-D6I");
 
 
 function init() {
