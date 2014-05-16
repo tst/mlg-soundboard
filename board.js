@@ -74,7 +74,12 @@ var soundfiles = new Array("2SAD4ME.mp3",
                            "2SED4AIRHORN.mp3",
                            "tactical nuke.mp3",
                            "intervention 420.mp3",
-                           "AIRPORN.mp3");
+                           "AIRPORN.mp3",
+                           "DEDOTADED WAM.mp3",
+                           "DAMN SON WOW.mp3",
+                           "GET NOSCOPED.mp3",
+                           "AIRHORN SONATA.mp3",
+                           "wow ;).mp3");
 
 var sourcefiles = new Array("https://www.youtube.com/watch?v=JSnR80kY0m0",
                             "https://www.youtube.com/watch?v=IpyingiCwV8",
@@ -93,7 +98,13 @@ var sourcefiles = new Array("https://www.youtube.com/watch?v=JSnR80kY0m0",
                             "https://soundcloud.com/gay-bagel/sad-airhorn",
                             "https://www.youtube.com/watch?v=cLI8wtbCIkM",
                             "https://www.youtube.com/watch?v=1O-dqWQOc8s",
-                            "https://www.youtube.com/watch?v=Ks5bzvT-D6I");
+                            "https://www.youtube.com/watch?v=Ks5bzvT-D6I",
+                            "https://www.youtube.com/watch?v=wsO-Td0hqXo",
+                            "https://www.youtube.com/watch?v=Se8Yq56tSLc",
+                            "https://www.youtube.com/watch?v=1mz6y526yCk",
+                            "https://www.youtube.com/watch?v=8YHqals6TBQ&t=64",
+                            "https://www.youtube.com/watch?v=FzjtPtOH-Hg");
+
 
 
 function init() {
@@ -126,7 +137,7 @@ function init() {
 var bList;
 
 function finishedLoading(bufferList) {
-    bList = bufferList;
+    var bList = bufferList;
     
     $("#loading").hide();
     /* add buttons */
