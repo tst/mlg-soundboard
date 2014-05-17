@@ -1,4 +1,4 @@
-# MLG Soundboard using WebAPI
+# MLG Soundboard using Web Audio API
 
 ## Description
 This features a simple soundboard using Web Sound API and distortion effects. 
