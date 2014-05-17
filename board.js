@@ -147,23 +147,49 @@ function init() {
 }
 
 
+function createHotkeys() {
+    // list hotkeys 48 .. 57 and 97 ... 122
+    var hotkeys = [];
+    for(var i = 48; i <= 57; i++) 
+        hotkeys.push(i);
+    for(var i = 97; i <= 122; i++)
+        hotkeys.push(i)
+
+    $.each(soundfiles, function (i) {
+        var btn = document.getElementById(i);
+        var badge = document.createElement("span");
+        badge.classList.add("badge", "hidden");
+        badge.style.marginLeft = "1.2em";
+        badge.innerHTML = String.fromCharCode(hotkeys[i]);
+        btn.appendChild(badge);
+    });
+};
+
 function finishedLoading(bufferList) {
     bList = bufferList;
     
     $("#loading").hide();
-
+    
     // add buttons
     $.each(soundfiles, function (i) {
-        var btn = document.createElement("input");
+        var btn = document.createElement("button");
         btn.type = "button";
-        btn.value = soundfiles[i].slice(0,-4);
+        btn.innerHTML = soundfiles[i].slice(0,-4);
         btn.id = i;
         btn.onclick = function() { playS(bList[this.id]); };
         btn.classList.add("btn", "btn-primary", "btn-lg");
-
+        
         document.getElementById("buttons").appendChild(btn);
     });
 
+    // create hotkey badges
+    createHotkeys();
+
+    // wire up toggle button
+    $("#togglehotkeys").bind("click", function () {
+        $("span.badge").toggleClass("hidden");
+        $(this).text( $(this).text() == "Show Hotkeys" ? "Hide Hotkeys" : "Show Hotkeys");
+    });
 
     // add keyboard controls
     $(document).keypress(function (e) {
