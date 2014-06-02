@@ -1,0 +1,6 @@
+# you can find the files on soundboard.panictank.net
+*.mp3
+loading.gif
+
+# mac stuff
+.DS_Store
