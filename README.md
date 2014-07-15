@@ -21,7 +21,7 @@ Other browsers don't seem to work because they haven't implemented the Web Audio
 
 ## Thanks
 
-* Thanks to the [leee](https://github.com/leee) for fixing an incorrect source link. 
+* Thanks to [leee](https://github.com/leee) for fixing an incorrect source link. 
 * Thanks to numerous people from [/r/montageparodies](http://www.reddit.com/r/montageparodies) for idea for new sounds
 
 ## Requests / Questions
