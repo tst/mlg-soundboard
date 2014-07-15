@@ -30,7 +30,8 @@ var soundfiles = new Array("2SAD4ME.mp3",
                            "AIRHORN SONATA.mp3",
                            "wow ;).mp3",
                            "SHOTS FIRED.mp3",
-                           "NEVER DONE THAT.mp3");
+                           "NEVER DONE THAT.mp3",
+                           "SPOOKY.mp3");
 
 var sourcefiles = new Array("https://www.youtube.com/watch?v=JSnR80kY0m0",
                             "https://www.youtube.com/watch?v=IpyingiCwV8",
@@ -44,7 +45,7 @@ var sourcefiles = new Array("https://www.youtube.com/watch?v=JSnR80kY0m0",
                             "https://www.youtube.com/watch?v=WSeNSzJ2-Jw",
                             "https://www.youtube.com/watch?v=KlujizeNNQM",
                             "https://www.youtube.com/watch?v=pD_imYhNoQ4",
-			    "https://www.youtube.com/watch?v=s_x_4UElTDI",
+                            "https://www.youtube.com/watch?v=s_x_4UElTDI",
                             "https://www.youtube.com/watch?v=thhaf-bKWyg",
                             "https://soundcloud.com/gay-bagel/sad-airhorn",
                             "https://www.youtube.com/watch?v=cLI8wtbCIkM",
@@ -56,7 +57,8 @@ var sourcefiles = new Array("https://www.youtube.com/watch?v=JSnR80kY0m0",
                             "https://www.youtube.com/watch?v=8YHqals6TBQ&t=64",
                             "https://www.youtube.com/watch?v=FzjtPtOH-Hg",
                             "https://www.youtube.com/watch?v=F9rKxIA1TQY",
-                            "https://www.youtube.com/watch?v=bKmBEdY35mA");
+                            "https://www.youtube.com/watch?v=bKmBEdY35mA",
+                            "https://www.youtube.com/watch?v=rbBX6aEzEz8");
 
 
 
