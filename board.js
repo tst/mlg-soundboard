@@ -211,12 +211,15 @@ function finishedLoading(bufferList) {
     });
 }
 
+var buffers = Array();
+
 function play(buffer, drive, gain) {
     var source = context.createBufferSource();
     source.buffer = buffer;
-    
+    buffers.push(source);
     var gainN = context.createGain();
     gainN.gain.value = gain;
+    buffers.push(gainN);
     
     source.connect(gainN);
     
@@ -233,6 +236,7 @@ function play(buffer, drive, gain) {
     
         var gain2 = context.createGain();
         overdrive.connect(gain2);
+        buffers.push(gain2);
         
         // apply second gain of 2.6
         gain2.gain.value = 2.6;
@@ -250,3 +254,11 @@ function playS(buf) {
     play(buf, drive, gain);
 }
 
+// hitting escape will stop all sounds
+document.onkeyup=function(e) {
+    if (e.keyCode == 13 || e.keyCode == 27) {
+         for (var i = 0; i < buffers.length; i++) {
+             buffers[i].disconnect(0);
+         }
+    }
+};
