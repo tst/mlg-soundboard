@@ -254,8 +254,8 @@ function playS(buf) {
     play(buf, drive, gain);
 }
 
-// hitting escape will stop all sounds
-document.onkeyup=function(e) {
+// hitting escape or enter will stop all sounds
+document.onkeyup = function(e) {
     if (e.keyCode == 13 || e.keyCode == 27) {
          for (var i = 0; i < buffers.length; i++) {
              buffers[i].disconnect(0);
