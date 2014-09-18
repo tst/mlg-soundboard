@@ -21,7 +21,7 @@ Other browsers don't seem to work because they haven't implemented the Web Audio
 
 ## Alternative implementations
 
-* ~~[kingly.sx](http://kingly.sx/) offers the same soundboard with even more sounds, check it out~~
+* [kingly.sx](http://kingly.sx/) offers the same soundboard with even more sounds, check it out
 
 
 ## Thanks
