@@ -1,7 +1,9 @@
-// init global vars
+// global vars
 window.onload = init;
 var context;
 var bufferLoader;
+
+// Is used for loading in all the buffers which are then played!
 var bList;
 
 
@@ -182,7 +184,6 @@ function generateListOfHotKeys() {
 function createHotkeys() {
 	var hotkeys = generateListOfHotKeys();
 
-
     $.each(soundfiles, function (i) {
         var btn = document.getElementById(i);
         var badge = document.createElement("span");
@@ -193,12 +194,8 @@ function createHotkeys() {
     });
 };
 
-function finishedLoading(bufferList) {
-    bList = bufferList;
-    
-    $("#loading").hide();
-    
-    // add buttons
+
+function displayPlayButtons () {
     $.each(soundfiles, function (i) {
         var btn = document.createElement("button");
         btn.type = "button";
@@ -209,17 +206,18 @@ function finishedLoading(bufferList) {
         
         document.getElementById("buttons").appendChild(btn);
     });
+}
 
-    // create hotkey badges
-    createHotkeys();
 
-    // wire up toggle button
+function setUpToggleHotkeys() {
     $("#togglehotkeys").bind("click", function () {
         $("span.badge").toggleClass("hidden");
         $(this).text( $(this).text() == "Show Hotkeys" ? "Hide Hotkeys" : "Show Hotkeys");
     });
+}
 
-    // add keyboard controls
+
+function addKeyboardControls() {
     $(document).keypress(function (e) {
         // for 0 to 9
         if (e.which >= 48 && e.which <= 57) {
@@ -232,6 +230,27 @@ function finishedLoading(bufferList) {
         }
     });
 }
+
+
+function loadUIElements() {
+    $("#loading").hide();
+
+	displayPlayButtons();
+    createHotkeys();
+	setUpToggleHotkeys();
+	addKeyboardControls();
+}
+
+
+
+function finishedLoading(bufferList) {
+	// HACK: Makes the parameter global so that we get access to it. 
+	// It is implicitly loaded
+    bList = bufferList;
+	
+	loadUIElements();
+}
+
 
 var buffers = Array();
 
