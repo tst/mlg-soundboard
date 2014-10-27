@@ -28,7 +28,7 @@ var soundfiles = new Array("2SAD4ME.mp3",
                            "DAMN SON WOW.mp3",
                            "GET NOSCOPED.mp3",
                            "AIRHORN SONATA.mp3",
-                           "wow ;).mp3",
+                           //"wow ;).mp3",
                            "SHOTS FIRED.mp3",
                            "NEVER DONE THAT.mp3",
                            "SPOOKY.mp3");
@@ -55,7 +55,7 @@ var sourcefiles = new Array("https://www.youtube.com/watch?v=JSnR80kY0m0",
                             "https://www.youtube.com/watch?v=Se8Yq56tSLc",
                             "https://www.youtube.com/watch?v=1mz6y526yCk",
                             "https://www.youtube.com/watch?v=8YHqals6TBQ&t=64",
-                            "https://www.youtube.com/watch?v=FzjtPtOH-Hg",
+                            //"https://www.youtube.com/watch?v=FzjtPtOH-Hg",
                             "https://www.youtube.com/watch?v=F9rKxIA1TQY",
                             "https://www.youtube.com/watch?v=bKmBEdY35mA",
                             "https://www.youtube.com/watch?v=rbBX6aEzEz8");
@@ -118,26 +118,40 @@ BufferLoader.prototype.load = function() {
 
 // END bufferloader class
 
+// BEGIN custom code
+
+
+function generatePanelLinks(idName, linkfiles, modifyLinktext) {
+
+	var links = $("#" + idName).append('<ul class="list-group">');
+
+    $.each(soundfiles, function (i) {
+        links.append("<li class=\"list-group-item\"><a href=\"" 
+                       + linkfiles[i] + "\" target=\"_blank\">" + 
+                       modifyLinktext(soundfiles[i]) + "</a></li>")
+    });
+
+}
+
+
+function generateSourceLinks() {
+	generatePanelLinks("sourcelinks", sourcefiles, function (s) { return s.slice(0, -4); });
+}
+
+
+function generateDownloadLinks() {
+	// NOTICE: Maybe I have to change the linkfiles to an absolute path.
+	generatePanelLinks("downloadlinks", soundfiles, function (s) { return s; });
+}
 
 
 
 function init() {
-    // sources and download links
-    $("#sourcelinks").append("<ul class=\"list-group\">");
-    var sourcelinks = $("#sourcelinks ul");
-
-    $.each(soundfiles, function (i) {
-        sourcelinks.append("<li class=\"list-group-item\"><a href=\"" 
-                           + sourcefiles[i] + "\" target=\"_blank\">" + 
-                           soundfiles[i].slice(0, -4) + "</a></li>")
-    });
+	generateSourceLinks();
+	generateDownloadLinks();
     
-    $("#downloadlinks").append("<ul class=\"list-group\">");
-    var downloadlinks = $("#downloadlinks ul");
-    $.each(soundfiles, function (i) {
-        downloadlinks.append("<li class=\"list-group-item\"><a href=\"http://soundboard.panictank.net/" 
-                             + soundfiles[i] + "\">" + soundfiles[i] + "</a></li>")
-    });
+    
+
 
     // load mp3 files into RAM and active finishedLoading()
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
