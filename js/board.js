@@ -145,15 +145,7 @@ function generateDownloadLinks() {
 }
 
 
-
-function init() {
-	generateSourceLinks();
-	generateDownloadLinks();
-    
-    
-
-
-    // load mp3 files into RAM and active finishedLoading()
+function loadFilesInMemory() {
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
     context = new AudioContext();
 
@@ -161,19 +153,35 @@ function init() {
         context,
         soundfiles,
         finishedLoading
-        );
+    );
 
     bufferLoader.load();
 }
 
 
-function createHotkeys() {
-    // list hotkeys 48 .. 57 and 97 ... 122
+function init() {
+	generateSourceLinks();
+	generateDownloadLinks();
+	loadFilesInMemory();
+}
+
+
+function generateListOfHotKeys() {
     var hotkeys = [];
-    for(var i = 48; i <= 57; i++) 
+	for(var i = 48; i <= 57; i++) {
         hotkeys.push(i);
-    for(var i = 97; i <= 122; i++)
+	}
+    for(var i = 97; i <= 122; i++) {
         hotkeys.push(i)
+	}
+	return hotkeys;
+}
+	
+
+
+function createHotkeys() {
+	var hotkeys = generateListOfHotKeys();
+
 
     $.each(soundfiles, function (i) {
         var btn = document.getElementById(i);
