@@ -1,10 +1,13 @@
-// global vars
-window.onload = init;
 var context;
 var bufferLoader;
 
+window.onload = init;
+
 // Is used for loading in all the buffers which are then played!
 var bList;
+
+// Holds all active buffers. Is used so that we can stop them at all times
+var activeBuffers = Array();
 
 
 // mp3 files and sources
@@ -30,7 +33,7 @@ var soundfiles = new Array("2SAD4ME.mp3",
                            "DAMN SON WOW.mp3",
                            "GET NOSCOPED.mp3",
                            "AIRHORN SONATA.mp3",
-                           //"wow ;).mp3",
+                           "wow ;).mp3",
                            "SHOTS FIRED.mp3",
                            "NEVER DONE THAT.mp3",
                            "SPOOKY.mp3");
@@ -57,7 +60,7 @@ var sourcefiles = new Array("https://www.youtube.com/watch?v=JSnR80kY0m0",
                             "https://www.youtube.com/watch?v=Se8Yq56tSLc",
                             "https://www.youtube.com/watch?v=1mz6y526yCk",
                             "https://www.youtube.com/watch?v=8YHqals6TBQ&t=64",
-                            //"https://www.youtube.com/watch?v=FzjtPtOH-Hg",
+                            "https://www.youtube.com/watch?v=FzjtPtOH-Hg",
                             "https://www.youtube.com/watch?v=F9rKxIA1TQY",
                             "https://www.youtube.com/watch?v=bKmBEdY35mA",
                             "https://www.youtube.com/watch?v=rbBX6aEzEz8");
@@ -201,7 +204,7 @@ function displayPlayButtons () {
         btn.type = "button";
         btn.innerHTML = soundfiles[i].slice(0,-4);
         btn.id = i;
-        btn.onclick = function() { playS(bList[this.id]); };
+        btn.onclick = function() { playComposition(bList[this.id]); };
         btn.classList.add("btn", "btn-primary", "btn-lg");
         
         document.getElementById("buttons").appendChild(btn);
@@ -252,32 +255,33 @@ function finishedLoading(bufferList) {
 }
 
 
-var buffers = Array();
+
 
 function play(buffer, drive, gain) {
     var source = context.createBufferSource();
     source.buffer = buffer;
-    buffers.push(source);
-    var gainN = context.createGain();
-    gainN.gain.value = gain;
-    buffers.push(gainN);
+    activeBuffers.push(source);
+	
+    var gainNode = context.createGain();
+    gainNode.gain.value = gain;
+    activeBuffers.push(gainNode);
     
-    source.connect(gainN);
+    source.connect(gainNode);
     
     if (drive == 0)
     {
-        gainN.connect(context.destination); 
+        gainNode.connect(context.destination); 
 
     } else {
         // workaround for using overdrive which is a bit low in volume
         var overdrive = new Overdrive(context);
         overdrive.drive = drive;
         overdrive.color = 8000;
-        gainN.connect(overdrive.input);
+        gainNode.connect(overdrive.input);
     
         var gain2 = context.createGain();
         overdrive.connect(gain2);
-        buffers.push(gain2);
+        activeBuffers.push(gain2);
         
         // apply second gain of 2.6
         gain2.gain.value = 2.6;
@@ -289,17 +293,19 @@ function play(buffer, drive, gain) {
 
 
 
-function playS(buf) {
+function playComposition(buf) {
     var drive = document.getElementById("drive").value / 10.0;
     var gain = document.getElementById("gain").value;
     play(buf, drive, gain);
 }
 
+
 // hitting escape or enter will stop all sounds
 document.onkeyup = function(e) {
     if (e.keyCode == 13 || e.keyCode == 27) {
-         for (var i = 0; i < buffers.length; i++) {
-             buffers[i].disconnect(0);
+         for (var i = 0; i < activeBuffers.length; i++) {
+             activeBuffers[i].disconnect(0);
          }
+		 activeBuffers = [];
     }
 };
