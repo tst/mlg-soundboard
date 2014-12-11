@@ -21,6 +21,7 @@ Other browsers don't seem to work because they haven't implemented the Web Audio
 
 ## Alternative implementations
 
+*[Illuminati Soundboard (iOS)](https://itunes.apple.com/us/app/illuminati-soundboard/id939112106?mt=8&uo) by Thomas Quinn
 * [kingly.sx](http://kingly.sx/) offers the same soundboard with even more sounds, check it out (on Github: [kinglysx](https://github.com/kinglysx))
 
 
