@@ -7,11 +7,11 @@ window.onload = init;
 var bList;
 
 // Holds all active buffers. Is used so that we can stop them at all times
-var activeBuffers = Array();
+var activeBuffers = [];
 
 
 // mp3 files and sources
-var soundfiles = new Array("2SAD4ME.mp3",
+var soundfiles = ["2SAD4ME.mp3",
                            "AIRHORN.mp3",
                            "Darude - Dankstorm.mp3",
                            "HITMARKER.mp3",
@@ -36,9 +36,9 @@ var soundfiles = new Array("2SAD4ME.mp3",
                            "wow ;).mp3",
                            "SHOTS FIRED.mp3",
                            "NEVER DONE THAT.mp3",
-                           "SPOOKY.mp3");
+                           "SPOOKY.mp3"];
 
-var sourcefiles = new Array("https://www.youtube.com/watch?v=JSnR80kY0m0",
+var sourcefiles = ["https://www.youtube.com/watch?v=JSnR80kY0m0",
                             "https://www.youtube.com/watch?v=IpyingiCwV8",
                             "https://www.youtube.com/watch?v=u9ymUX1fJLw",
                             "https://www.dropbox.com/s/3nh8u7nrql96k48/HITMARKER.wav",
@@ -63,7 +63,7 @@ var sourcefiles = new Array("https://www.youtube.com/watch?v=JSnR80kY0m0",
                             "https://www.youtube.com/watch?v=FzjtPtOH-Hg",
                             "https://www.youtube.com/watch?v=F9rKxIA1TQY",
                             "https://www.youtube.com/watch?v=bKmBEdY35mA",
-                            "https://www.youtube.com/watch?v=rbBX6aEzEz8");
+                            "https://www.youtube.com/watch?v=rbBX6aEzEz8"];
 
 
 
@@ -77,7 +77,7 @@ function BufferLoader(context, urlList, callback) {
   this.context = context;
   this.urlList = urlList;
   this.onload = callback;
-  this.bufferList = new Array();
+  this.bufferList = [];
   this.loadCount = 0;
 }
 
