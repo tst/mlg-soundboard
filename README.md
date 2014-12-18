@@ -30,6 +30,7 @@ Other browsers don't seem to work because they haven't implemented the Web Audio
 * Thanks to [leee](https://github.com/leee) for fixing an incorrect source link. 
 * Thanks to [torleif](https://github.com/torleif) for adding a feature to stop the sound
 * Thanks to [daylostar](https://github.com/daylostar) for letting me know about the shut down of kingly.sx
+* Thanks to [Hydrothermal](https://github.com/Hydrothermal) for optimizing the code a bit
 * Thanks to numerous people from [/r/montageparodies](http://www.reddit.com/r/montageparodies) for idea for new sounds
 
 ## Requests / Questions
