@@ -1,0 +1,29 @@
+def curry(fun):
+
+    cache = []
+    numargs = fun.func_code.co_argcount
+
+    def new_fun(*args, **kargs):
+        print args
+        print kargs
+        cache.extend(list(args))
+
+        if len(cache) >= numargs:   # easier to do it explicitly, then with exceptions
+
+            temp = []
+            for _ in xrange(numargs):
+                temp.append(cache.pop())
+            fun(*temp)
+
+    return new_fun
+
+
+@curry
+def myfun(a,b):
+    print a,b
+    
+    list = []
+mask = "Test {}"
+append_masked = curry(_list.append, mask.format)
+for i in range(10):
+    append_masked(i)
