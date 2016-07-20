@@ -1,6 +1,10 @@
 var context;
 var bufferLoader;
 
+// default options
+var stopOnChange = true;
+var allowOverlap = false;
+
 window.onload = init;
 
 // Is used for loading in all the buffers which are then played!
@@ -190,24 +194,39 @@ function createHotkeys() {
     $.each(soundfiles, function (i) {
         var btn = document.getElementById(i);
         var badge = document.createElement("span");
-        badge.classList.add("badge", "hidden");
+        badge.classList.add("badge", "hotkey-badge");
         badge.style.marginLeft = "1.2em";
         badge.innerHTML = String.fromCharCode(hotkeys[i]);
         btn.appendChild(badge);
     });
 }
 
+function createButtonWrapper (){
+  var wrapper = document.createElement("div");
+  $(wrapper).addClass('col-xs-12 col-sm-6 col-md-4');
+  return wrapper;
+}
+
+function cycleButtonColors(i){
+  var options = ['primary','success','info','warning','danger'];
+  var random = options[Math.floor(Math.random() * options.length)];
+  var selected = options[i%options.length];
+  return selected;
+}
 
 function displayPlayButtons () {
     $.each(soundfiles, function (i) {
         var btn = document.createElement("button");
+        var buttonColor = 'btn-' + cycleButtonColors(i);
         btn.type = "button";
-        btn.innerHTML = soundfiles[i].slice(0,-4);
+        btn.innerHTML = "<strong>" + soundfiles[i].slice(0,-4) + "</strong>";
         btn.id = i;
         btn.onclick = function() { playComposition(bList[this.id]); };
-        btn.classList.add("btn", "btn-primary", "btn-lg");
+        btn.classList.add("btn", buttonColor, "btn-block", "spaced-button");
         
-        document.getElementById("buttons").appendChild(btn);
+        var wrapper = createButtonWrapper();
+        wrapper.appendChild(btn);
+        document.getElementById("buttons").appendChild(wrapper);
     });
 }
 
@@ -254,16 +273,28 @@ function finishedLoading(bufferList) {
   loadUIElements();
 }
 
-
+function IsNumeric(input)
+{
+    return (input - 0) == input && (''+input).trim().length > 0;
+}
 
 
 function play(buffer, drive, gain) {
   var source = context.createBufferSource();
   source.buffer = buffer;
+
+  // check if we are allowing sounds to overlap
+  if (!allowOverlap){
+    stopPlaying();
+  }
+
   activeBuffers.push(source);
 
   var gainNode = context.createGain();
-  gainNode.gain.value = gain;
+  
+  var adjustedGain = IsNumeric(gain) && gain > 0 ? gain / 10 : 0;
+
+  gainNode.gain.value = adjustedGain;
   activeBuffers.push(gainNode);
   
   source.connect(gainNode);
@@ -299,13 +330,16 @@ function playComposition(buf) {
   play(buf, drive, gain);
 }
 
+function stopPlaying (){
+  for (var i = 0; i < activeBuffers.length; i++) {
+      activeBuffers[i].disconnect(0);
+  }
+  activeBuffers = [];
+}
 
 // hitting escape or enter will stop all sounds
 document.onkeyup = function(e) {
   if (e.keyCode == 13 || e.keyCode == 27) {
-    for (var i = 0; i < activeBuffers.length; i++) {
-      activeBuffers[i].disconnect(0);
-    }
-    activeBuffers = [];
+    stopPlaying();
   }
 };
