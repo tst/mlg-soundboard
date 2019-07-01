@@ -21,8 +21,8 @@ Other browsers don't seem to work because they haven't implemented the Web Audio
 
 ## Alternative implementations
 
-* [PnP Soundboard](https://github.com/Devp00l/pnp-soundboard) by Stephan Müller
 * [Illuminati Soundboard (iOS)](https://itunes.apple.com/us/app/illuminati-soundboard/id939112106?mt=8&uo) by Thomas Quinn
+* [PnP Soundboard](https://github.com/Devp00l/pnp-soundboard) by Stephan Müller
 * [kingly.sx](http://kingly.sx/) offers the same soundboard with even more sounds, check it out (on Github: [kinglysx](https://github.com/kinglysx))
 
 
